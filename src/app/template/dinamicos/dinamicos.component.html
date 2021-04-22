@@ -3,10 +3,41 @@
 
 <form ngSubmit='guardar()' #miFormulario='ngForm' >
     <div class="mb-3 row">
-        <label class="col-sm-3 col-form-label" ngModel name="nombre">Nombre</label>
+        <label class="col-sm-3 col-form-label">Nombre</label>
         <div class="col-sm-9">
-            <input class="form-control" placeholder="nombre">
+            <input class="form-control" 
+            placeholder="nombre"
+             [ngModel] = "persona.nombre"
+             name="nombre"
+              minlength="3" 
+              required>
             <span class="form-text text-danger" *ngIf="validar()">Este campo es obligatorio</span>
+        </div>
+    </div>
+
+
+    <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Agregar</label>
+        <div class="col-sm-9">
+            <input class="form-control" 
+            placeholder="Agregar favorito"
+             ngModel 
+             name="favoritos"
+              minlength="3" 
+              required>
+        </div>
+    </div>
+
+    <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">lista de Juegos Favoritos</label>
+        <div class="col-sm-9">
+            <input 
+            *ngFor="let item of persona.favoritos; let i = index" 
+            [(ngModel)] = "item.nombre"
+            name="'favorito_'{{i}}" 
+            class="form-control mb-1" 
+            required
+            >
         </div>
     </div>
 
@@ -14,10 +45,15 @@
     <div class="mb-3 row">
      
         <div class="col-sm-9">
-            <button class="btn btn-primary float-end" type="button" (click)="guardar()">Guardar</button>
-        </div>
-        </div>
+            <div class="input-group">
+                <button class="btn btn-outline-primary" type="button" >Agregar</button>
+                <button class="btn btn-primary" type="button" (click)="guardar()">Guardar</button>
+            </div>
+            </div>
+            </div>
 
 
 </form>
 
+<span>Persona</span>
+<pre>{{persona | json}}</pre>
