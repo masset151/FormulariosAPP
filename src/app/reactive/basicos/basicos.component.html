@@ -3,7 +3,7 @@
 
 <div class="row">
     <div class="col">
-        <form  autocomplete="off">
+        <form  autocomplete="off" [formGroup]="miFormulario">
             <div class="mb-3 row">
                 <label class="col-sm col-form-label">Producto</label>
                 <div class="col-sm-9">
@@ -11,7 +11,7 @@
 
 
 
-                    <input type="text" class="form-control" placeholder="Nombre del producto" required
+                    <input type="text" class="form-control" formControlName="nombre" placeholder="Nombre del producto"  
                         minlength="3">
 
                     <span class="form-text text-danger">Debe ser de 3 letras</span>
@@ -57,10 +57,26 @@
 </div>
 
 
-
 <div class="row">
     <div class="col">
+        <span>Valid</span>
+        <pre>{{miFormulario.valid}}</pre>
+  
 
+
+        <span>Pristine</span>
+        <pre>{{miFormulario.pristine}}</pre>
     </div>
 
+    <div class="col">
+        <span>Value</span>
+        <pre>{{miFormulario.value | json}}</pre>
+
+        <span>Touched</span>
+        <pre>{{miFormulario.touched}}</pre>
+
+
+        <span>CustomDirective</span>
+        <pre>{{miFormulario.controls.existencias?.errors | json}}</pre>
+    </div>
 </div>
