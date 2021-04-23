@@ -5,11 +5,7 @@ import { ReactiveRoutingModule } from './reactive-routing.module';
 import { BasicosComponent } from './basicos/basicos.component';
 import { DinamicosComponent } from './dinamicos/dinamicos.component';
 import { SwitchesComponent } from './switches/switches.component';
-<<<<<<< HEAD
-import { FormsModule } from '@angular/forms';
-=======
-import {ReactiveFormsModule } from '@angular/forms';
->>>>>>> ef1a50ea21029928ada177c65d2a792425f04710
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -21,11 +17,7 @@ import {ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     ReactiveRoutingModule,
-<<<<<<< HEAD
-    FormsModule
-=======
     ReactiveFormsModule
->>>>>>> ef1a50ea21029928ada177c65d2a792425f04710
   ]
 })
 export class ReactiveModule { }
