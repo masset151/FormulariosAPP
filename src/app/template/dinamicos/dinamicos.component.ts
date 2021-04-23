@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 interface Persona{
+<<<<<<< HEAD
   nombre:string;
   favoritos:Favoritos[]
 }
@@ -9,6 +10,15 @@ interface Persona{
 interface Favoritos{
 id:number;
 nombre:string;
+=======
+  nombre:string,
+  favoritos:favoritos[]
+}
+
+interface favoritos{
+  id:number,
+  nombre:string
+>>>>>>> ef1a50ea21029928ada177c65d2a792425f04710
 }
 
 @Component({
@@ -19,6 +29,7 @@ nombre:string;
 })
 export class DinamicosComponent{
 @ViewChild('miFormulario') formulario!: NgForm
+<<<<<<< HEAD
   
   nuevoJuego = '';
 
@@ -32,7 +43,24 @@ export class DinamicosComponent{
       id:2,
       nombre:'Fifa 21'
     }]
+=======
+
+persona:Persona = {
+nombre:'Andres',
+favoritos:[
+  {
+    id:1,
+    nombre:'Fifa 21'
+  },
+
+  {
+    id:2,
+    nombre:'Grand Thef Auto V'
+>>>>>>> ef1a50ea21029928ada177c65d2a792425f04710
   }
+
+]
+}
 
 
   agregar(){
@@ -51,6 +79,7 @@ export class DinamicosComponent{
   }
 
   validar():boolean{
+<<<<<<< HEAD
     return this.formulario?.controls.nombre?.errors && this.formulario.controls.nombre?.touched
   }
 
@@ -59,6 +88,10 @@ export class DinamicosComponent{
     this.persona.favoritos.splice(index,1)
     
 
+=======
+    return this.formulario?.controls.nombre?.touched && this.formulario.controls.nombre.invalid
+    
+>>>>>>> ef1a50ea21029928ada177c65d2a792425f04710
   }
 
   guardar(){

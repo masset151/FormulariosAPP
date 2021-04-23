@@ -6,6 +6,7 @@
     <!--Nombre-->
     
     <div class="mb-3 row">
+<<<<<<< HEAD
         <label class="col-sm-3 col-form-label" >Nombre</label>
         <div class="col-sm-9">
          
@@ -46,6 +47,48 @@
            
             
 
+=======
+        <label class="col-sm-3 col-form-label">Nombre</label>
+        <div class="col-sm-9">
+            <input class="form-control" 
+            placeholder="nombre"
+             [ngModel] = "persona.nombre"
+             name="nombre"
+              minlength="3" 
+              required>
+            <span class="form-text text-danger" *ngIf="validar()">Este campo es obligatorio</span>
+>>>>>>> ef1a50ea21029928ada177c65d2a792425f04710
+        </div>
+    </div>
+
+
+    <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Agregar</label>
+        <div class="col-sm-9">
+<<<<<<< HEAD
+            
+            <button class="btn btn-primary float-end" type="button" (click)="guardar()" required  [disabled]="miFormulario.invalid">Guardar</button>
+=======
+            <input class="form-control" 
+            placeholder="Agregar favorito"
+             ngModel 
+             name="favoritos"
+              minlength="3" 
+              required>
+>>>>>>> ef1a50ea21029928ada177c65d2a792425f04710
+        </div>
+    </div>
+
+    <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">lista de Juegos Favoritos</label>
+        <div class="col-sm-9">
+            <input 
+            *ngFor="let item of persona.favoritos; let i = index" 
+            [(ngModel)] = "item.nombre"
+            name="'favorito_'{{i}}" 
+            class="form-control mb-1" 
+            required
+            >
         </div>
     </div>
 
@@ -53,14 +96,21 @@
     <div class="mb-3 row">
      
         <div class="col-sm-9">
-            
-            <button class="btn btn-primary float-end" type="button" (click)="guardar()" required  [disabled]="miFormulario.invalid">Guardar</button>
-        </div>
-        </div>
+            <div class="input-group">
+                <button class="btn btn-outline-primary" type="button" >Agregar</button>
+                <button class="btn btn-primary" type="button" (click)="guardar()">Guardar</button>
+            </div>
+            </div>
+            </div>
 
 
 </form>
 
+<<<<<<< HEAD
 
 <span>Persona</span>
 <pre>{{persona | json}}</pre>
+=======
+<span>Persona</span>
+<pre>{{persona | json}}</pre>
+>>>>>>> ef1a50ea21029928ada177c65d2a792425f04710
