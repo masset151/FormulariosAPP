@@ -29,9 +29,8 @@ constructor(private fb:FormBuilder){
   ngOnInit(){
     this.miFormulario.reset({...this.persona, condiciones:false})
     
-    this.miFormulario.get('condiciones')?.valueChanges.subscribe(form =>{
-      delete form.condiciones;
-      this.persona = form;
+    this.miFormulario.get('condiciones')?.valueChanges.subscribe(({condiciones, ...rest}) =>{
+      this.persona = rest;
     })
     
     
