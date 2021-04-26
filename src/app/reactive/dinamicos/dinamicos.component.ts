@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-dinamicos',
@@ -17,6 +17,8 @@ export class DinamicosComponent implements OnInit {
       ['EA Sport Fifa 21', Validators.required],
     ], Validators.required)
   });
+
+  nuevoFavorito:FormControl = this.fb.control('',Validators.required)
 
   get favoritosArr() {
     return this.miFormulario.get('favoritos') as FormArray;
@@ -47,6 +49,24 @@ export class DinamicosComponent implements OnInit {
     this.miFormulario.reset()
 
 
+  }
+
+  eliminar(i:number){
+    this.favoritosArr.removeAt(i)
+  }
+
+
+  agregarFavorito(){
+    if(this.nuevoFavorito.invalid){
+      console.log(this.nuevoFavorito.value,Validators.required)
+      console.error('Formulario invalido')
+      return ;
+    }
+
+    //this.favoritosArr.push(new FormControl(this.nuevoFavorito.value))
+    this.favoritosArr.push(this.fb.control(this.nuevoFavorito.value,Validators.required))
+
+    //this.nuevoFavorito.reset()
   }
 
 }
