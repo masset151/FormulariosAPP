@@ -28,6 +28,27 @@ constructor(private fb:FormBuilder){
 }
   ngOnInit(){
     this.miFormulario.reset({...this.persona, condiciones:false})
+    
+    this.miFormulario.get('condiciones')?.valueChanges.subscribe(form =>{
+      delete form.condiciones;
+      this.persona = form;
+    })
+    
+    
+  }
+
+  guardar(){
+    
+    if(this.miFormulario.invalid){
+      console.error('Formulario no valido');
+      this.miFormulario.markAllAsTouched;
+      return ;
+    }
+    
+    const formValue = this.miFormulario.value
+    delete formValue.condiciones
+    this.persona = formValue
+    console.log(formValue)
   }
   
 }
