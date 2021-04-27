@@ -20,17 +20,18 @@
                 <label class="col-sm-3 col-form-label">Email</label>
                 <div class="col-sm-9">
                     <input type="email" class="form-control" formControlName="email" placeholder="Introduzca su nombre de usuario">
-                    <span class="form-text text-danger" *ngIf="campoNoValido('email')" required>El correo es obligatorio</span>
+                    
                 </div>
-               
+                <span class="form-text text-danger" *ngIf="campoNoValido('email')" required>El correo es obligatorio</span>
             </div>
 
              <!--Nombre-->
              <div class="row-mb-3">
                 <label class="col-sm-3 col-form-label">Username</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" placeholder="Nombre del usuario">
+                    <input type="text" class="form-control" formControlName="username" placeholder="Nombre del usuario">
                 </div>
+                <span class="form-text text-danger" *ngIf="campoNoValido('username')" required>El nombre de usuario no puede ser Strider</span>
                
             </div>
 
@@ -74,3 +75,6 @@
 
 <h2>Email</h2>
 <span>{{miFormulario.controls.email.errors | json}}</span>
+
+<h2>Username</h2>
+<span>{{miFormulario.controls.username.errors | json}}</span>

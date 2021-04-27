@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder,FormGroup, Validators } from '@angular/forms';
+import { FormBuilder,FormControl,FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-registro',
@@ -14,7 +14,8 @@ export class RegistroComponent implements OnInit {
 
   miFormulario:FormGroup = this.fb.group({
     nombre:['',[Validators.required, Validators.pattern(this.nombreApellidoPatter)]],
-    email: ['',[Validators.required,Validators.email,Validators.pattern(this.emailPattern)]]
+    email: ['',[Validators.required,Validators.email,Validators.pattern(this.emailPattern)]],  
+    username: ['',[Validators.required,this.noPuedeSerStrider]]
   })
 
   constructor(private fb:FormBuilder){}
@@ -24,7 +25,8 @@ export class RegistroComponent implements OnInit {
 
     this.miFormulario.reset({
       nombre:"Andres Masset",
-      email:"test1@test.com"
+      email:"test1@test.com",
+      username:'masset_151'
     })
     
   }
@@ -36,6 +38,21 @@ export class RegistroComponent implements OnInit {
   submitFormulario(){
     console.log(this.miFormulario.value)
     this.miFormulario.markAllAsTouched();
+  }
+
+  noPuedeSerStrider(control:FormControl){
+
+    const valor:string = control.value?.trim().toLowerCase()
+    if(valor == 'strider'){
+      return {
+        noStrider: true,
+
+
+      }
+    }
+
+    return null;
+
   }
 
  
