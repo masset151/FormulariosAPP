@@ -22,7 +22,7 @@
                     <input type="email" class="form-control" formControlName="email" placeholder="Introduzca su nombre de usuario">
                     
                 </div>
-                <span class="form-text text-danger" *ngIf="campoNoValido('email')" required>El correo es obligatorio</span>
+                <span class="form-text text-danger"  *ngIf=" campoNoValido('email')">{{emailErrorMsg}}</span>
             </div>
 
              <!--Nombre-->
@@ -60,7 +60,7 @@
 
             <div class="row">
                 <div class="col">
-                    <button class="btn btn-primary float-end"type="submit">Crear Usuario</button>
+                    <button class="btn btn-primary float-end" [disabled]="miFormulario.pending"  type="submit">Crear Usuario</button>
                 </div>
             </div>
 
@@ -75,6 +75,7 @@
     
        
 <h2>Form Valid:{{miFormulario.valid}}</h2>
+<h2>Form Status:{{miFormulario.status}}</h2>
 
 <h2>Form Error:</h2>
 <span>{{miFormulario.errors|json}}</span>
